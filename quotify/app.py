@@ -1,5 +1,5 @@
 from flask_restful import Api
-from blueprints import app, manager
+from blueprints import app #, manager
 import logging, sys
 from logging.handlers import RotatingFileHandler
 

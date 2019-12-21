@@ -1,0 +1,92 @@
+[2019-12-21 17:08:23,462]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
+Traceback (most recent call last):
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 458, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 573, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 51, in post
+    return {'message': url_for('uploaded_file', filename=filename2)}
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 2215, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/werkzeug/routing.py", line 2020, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'uploaded_file' with values ['filename']. Did you mean 'static' instead?
+[2019-12-21 17:09:05,225]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
+Traceback (most recent call last):
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 458, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 573, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 51, in post
+    return {'message': url_for('uploaded_file', filename2=filename2)}
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 2215, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/werkzeug/routing.py", line 2020, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'uploaded_file' with values ['filename2']. Did you mean 'static' instead?
+[2019-12-21 17:09:31,525]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
+Traceback (most recent call last):
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 458, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 573, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 51, in post
+    return {'message': url_for('uploaded_file', static=filename2)}
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 2215, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/werkzeug/routing.py", line 2020, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'uploaded_file' with values ['static']. Did you mean 'static' instead?
+[2019-12-21 17:20:03,256]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
+Traceback (most recent call last):
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 458, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 573, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 50, in post
+    filename3 = ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(32)) + '.jpg'
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 50, in <genexpr>
+    filename3 = ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(32)) + '.jpg'
+NameError: name 'string' is not defined
