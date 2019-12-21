@@ -97,24 +97,24 @@ def proceedBlurring(app_id, app_key, img_url, count_no=3):
             return {'status':'failed', 'message':'third party request error, Failed proceed task'}   
         
 
-def proceedReqId(request_id):
-    rq = requests.get(img_get_api_host, params={'request_id':request_id})
-            
-    if rq.status_code != 200:
-        return {'status':'failed', 'message':'error dari third party api'}, 400
+def proceedReqId(self, request_id):
+        rq = requests.get(self.img_get_api_host, params={'request_id':request_id})
+                
+        if rq.status_code != 200:
+            return {'status':'failed', 'message':'error dari third party api'}, 400
 
 
-    resp0 = json.dumps(xmltodict.parse(rq.text))
+        resp0 = json.dumps(xmltodict.parse(rq.text))
+        
+        resp = json.loads(resp0)
 
-    resp = json.loads(resp0)
-
-    if resp is not None:
-        if resp['image_process_response']['status'].lower() == 'ok':
+        if (resp is not None)and(resp['image_process_response']['status'].lower() == 'ok'):
             img_url = resp['image_process_response']['nowm_image_url']
 
             return {'status':'successful', 'img_url':img_url}
-    else:
-        return {'status':'failed', 'message':'error dari third party api'}, 400
+            
+        else:
+            return {'status':'failed', 'message':'error dari third party api, Failed to get filter result by req id'}
 
 
 
