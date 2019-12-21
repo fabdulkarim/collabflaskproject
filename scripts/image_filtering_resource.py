@@ -16,10 +16,10 @@ import xmltodict, json
 import time                 #mengambil fungsi delay
 
 
-bp_blur = Blueprint('the_blur', __name__)  
-api = Api(bp_blur)
+bp_filter = Blueprint('the_filter', __name__)  
+api = Api(bp_filter)
 
-class BlurResource(Resource):
+class FilterResource(Resource):
     img_task_api_host = 'http://opeapi.ws.pho.to/addtask/'
     img_get_api_host = 'http://opeapi.ws.pho.to/getresult'
 
@@ -149,5 +149,5 @@ class BlurResource(Resource):
 
 ######################### BARIS CODE INI HANYA UTK ROUTING URL REQUEST  ###########################
 #########################       JANGAN PANGGIL ATAU COMMENT SAJA        ###########################
-api.add_resource(BlurResource,'')   
+api.add_resource(FilterResource,'')   
 
