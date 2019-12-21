@@ -49,6 +49,11 @@ class TestMockOpeapiImageFiltering():
 							'status': 'OK',
 							"request_id":"c8c4ffa9-b8a0-4438-ba8d-ae3cc2cb6c46"
 					}, 200)
+				elif kwargs['data']['app_id'] == '1':
+					return MockResponse({
+							'status': 'OK',
+							"request_id":"123"
+					}, 200)
 				else:
 					return MockResponse({'status': 'Error'}, 200)
 
@@ -70,9 +75,15 @@ class TestMockOpeapiImageFiltering():
 		assert result['img_url'] != None
 
 		# Testing Function utk filter Blur pd image 
-		# dengan hasil error (cth: argumen tidak lengkap, sehingga 3rd Party mengembalikan response error)
+		# dengan hasil error (cth: berhasil di proses request task, tapi request id invalid, sehingga 3rd Party mengembalikan response error)
 		# API di http://opeapi.ws.pho.to, selalu mengembalikan status code 200 walau error
 		result = img_filter.proceedBlurring('1','2', self.sample_image)
+		assert result['status'].lower() != 'successful'
+
+		# Testing Function utk filter Blur pd image 
+		# dengan hasil error (cth: fail total dari proses request task, sehingga 3rd Party mengembalikan response error)
+		# API di http://opeapi.ws.pho.to, selalu mengembalikan status code 200 walau error
+		result = img_filter.proceedBlurring('2','2', self.sample_image)
 		assert result['status'].lower() != 'successful'
 
 
@@ -84,9 +95,15 @@ class TestMockOpeapiImageFiltering():
 		assert result['img_url'] != None
 
 		# Testing Function utk filter Desaturate pd image 
-		# dengan hasil error (cth: argumen tidak lengkap, sehingga 3rd Party mengembalikan response error)
+		# dengan hasil error (cth: berhasil di proses request task, tapi request id invalid, sehingga 3rd Party mengembalikan response error)
 		# API di http://opeapi.ws.pho.to, selalu mengembalikan status code 200 walau error
 		result = img_filter.proceedDesaturate('1','2', self.sample_image)
+		assert result['status'].lower() != 'successful'
+
+		# Testing Function utk filter Desaturate pd image 
+		# dengan hasil error (cth: fail total dari proses request task, sehingga 3rd Party mengembalikan response error)
+		# API di http://opeapi.ws.pho.to, selalu mengembalikan status code 200 walau error
+		result = img_filter.proceedDesaturate('2','2', self.sample_image)
 		assert result['status'].lower() != 'successful'
 
 
