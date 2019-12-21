@@ -7,29 +7,29 @@ from flask import Flask, request
 ##from flask_sqlalchemy import SQLAlchemy
 #from flask_migrate import Migrate, MigrateCommand
 
-#from flask_jwt_extended import JWTManager, verify_jwt_in_request, get_jwt_claims
+from flask_jwt_extended import JWTManager, verify_jwt_in_request, get_jwt_claims
 
-# from flask_script import Manager
+from flask_script import Manager
 
 
 app = Flask(__name__) # this is yang menyebabkan lokasi app.rootnya disini
 
 
-# app.config['JWT_SECRET_KEY'] = '1Y1uHnISqEZ6MNlH03Jh0plYzz6gCUq1'
-# app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(days=1)
+app.config['JWT_SECRET_KEY'] = '1Y1uHnISqEZ6MNlH03Jh0plYzz6gCUq1'
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(days=1)
 
-# jwt = JWTManager(app)
+jwt = JWTManager(app)
 
-# def internal_required(fn):
-#     @wraps(fn)
-#     def wrapper(*args, **kwargs):
-#         verify_jwt_in_request()
-#         claims= get_jwt_claims()
-#         if not claims['isadmin']:
-#             return {'status': 'FORBIDDEN', 'message': 'Internal Only!'}, 403
-#         else:
-#             return fn(*args, **kwargs)
-#     return wrapper
+def internal_required(fn):
+    @wraps(fn)
+    def wrapper(*args, **kwargs):
+        verify_jwt_in_request()
+        claims= get_jwt_claims()
+        if not claims['isadmin']:
+            return {'status': 'FORBIDDEN', 'message': 'Internal Only!'}, 403
+        else:
+            return fn(*args, **kwargs)
+    return wrapper
 
 
 # #################### NAMBAHIN BUAT TESTING
@@ -82,5 +82,11 @@ app = Flask(__name__) # this is yang menyebabkan lokasi app.rootnya disini
 
 from blueprints.gambar.resources import bp_gambar
 app.register_blueprint(bp_gambar, url_prefix='/gambar')
+
+from blueprints.user.resources import bp_user
+app.register_blueprint(bp_user, url_prefix='')
+
+from blueprints.login.resources import bp_login
+app.register_blueprint(bp_login, url_prefix='/login')
 
 #db.create_all()
