@@ -3,6 +3,7 @@ from unittest import mock
 from unittest.mock import patch
 from blueprints.main.filterresource import FilterResource
 import dicttoxml
+from . import client 
 
 class TestMockOpeapiImageFiltering():
 	sample_image = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Nelumno_nucifera_open_flower_-_botanic_garden_adelaide2.jpg/800px-Nelumno_nucifera_open_flower_-_botanic_garden_adelaide2.jpg'
@@ -63,7 +64,7 @@ class TestMockOpeapiImageFiltering():
 
 	@mock.patch('requests.post', side_effect=mocked_requests_post)
 	@mock.patch('requests.get', side_effect=mocked_requests_get)
-	def test_image_filtering(self, test_reqget_mock, test_reqpost_mock):
+	def test_image_filtering(self, test_reqget_mock, test_reqpost_mock, client):
 
 		img_filter = FilterResource()
 
@@ -119,4 +120,35 @@ class TestMockOpeapiImageFiltering():
 		# dari API di http://opeapi.ws.pho.to
 		#dengan hasil gagal, contoh : request id tidak valid
 		result = img_filter.proceedReqId('1')
+		assert result['status'].lower() != 'successful'
+
+
+
+		#Test dengan request POST , berhasil total
+		data = {
+			'app_id' : self.sample_app_id, 
+			'key' : self.sample_key,
+			'img_url' : self.sample_image
+		}
+		resp = client.post('/filter', json=data)
+		
+		result = json.loads(resp.data)
+
+
+		assert result['status'].lower() == 'successful'
+		assert result['img_url'] != None
+
+
+
+		#Test dengan request POST , gagal di request id, berhasil di request task
+		data = {
+			'app_id' : '1', 
+			'key' : self.sample_key,
+			'img_url' : self.sample_image
+		}
+		resp = client.post('/filter', json=data)
+		
+		result = json.loads(resp.data)
+
+
 		assert result['status'].lower() != 'successful'
