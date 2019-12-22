@@ -2,7 +2,9 @@ import json
 from unittest import mock
 from unittest.mock import patch
 from blueprints.main.filterresource import FilterResource
+from blueprints.main.localFilterResource import *
 import dicttoxml
+from . import client 
 
 class TestMockOpeapiImageFiltering():
 	sample_image = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Nelumno_nucifera_open_flower_-_botanic_garden_adelaide2.jpg/800px-Nelumno_nucifera_open_flower_-_botanic_garden_adelaide2.jpg'
@@ -49,6 +51,11 @@ class TestMockOpeapiImageFiltering():
 							'status': 'OK',
 							"request_id":"c8c4ffa9-b8a0-4438-ba8d-ae3cc2cb6c46"
 					}, 200)
+				elif kwargs['data']['app_id'] == '1':
+					return MockResponse({
+							'status': 'OK',
+							"request_id":"123"
+					}, 200)
 				else:
 					return MockResponse({'status': 'Error'}, 200)
 
@@ -58,7 +65,7 @@ class TestMockOpeapiImageFiltering():
 
 	@mock.patch('requests.post', side_effect=mocked_requests_post)
 	@mock.patch('requests.get', side_effect=mocked_requests_get)
-	def test_image_filtering(self, test_reqget_mock, test_reqpost_mock):
+	def test_image_filtering(self, test_reqget_mock, test_reqpost_mock, client):
 
 		img_filter = FilterResource()
 
@@ -70,9 +77,15 @@ class TestMockOpeapiImageFiltering():
 		assert result['img_url'] != None
 
 		# Testing Function utk filter Blur pd image 
-		# dengan hasil error (cth: argumen tidak lengkap, sehingga 3rd Party mengembalikan response error)
+		# dengan hasil error (cth: berhasil di proses request task, tapi request id invalid, sehingga 3rd Party mengembalikan response error)
 		# API di http://opeapi.ws.pho.to, selalu mengembalikan status code 200 walau error
 		result = img_filter.proceedBlurring('1','2', self.sample_image)
+		assert result['status'].lower() != 'successful'
+
+		# Testing Function utk filter Blur pd image 
+		# dengan hasil error (cth: fail total dari proses request task, sehingga 3rd Party mengembalikan response error)
+		# API di http://opeapi.ws.pho.to, selalu mengembalikan status code 200 walau error
+		result = img_filter.proceedBlurring('2','2', self.sample_image)
 		assert result['status'].lower() != 'successful'
 
 
@@ -84,9 +97,15 @@ class TestMockOpeapiImageFiltering():
 		assert result['img_url'] != None
 
 		# Testing Function utk filter Desaturate pd image 
-		# dengan hasil error (cth: argumen tidak lengkap, sehingga 3rd Party mengembalikan response error)
+		# dengan hasil error (cth: berhasil di proses request task, tapi request id invalid, sehingga 3rd Party mengembalikan response error)
 		# API di http://opeapi.ws.pho.to, selalu mengembalikan status code 200 walau error
 		result = img_filter.proceedDesaturate('1','2', self.sample_image)
+		assert result['status'].lower() != 'successful'
+
+		# Testing Function utk filter Desaturate pd image 
+		# dengan hasil error (cth: fail total dari proses request task, sehingga 3rd Party mengembalikan response error)
+		# API di http://opeapi.ws.pho.to, selalu mengembalikan status code 200 walau error
+		result = img_filter.proceedDesaturate('2','2', self.sample_image)
 		assert result['status'].lower() != 'successful'
 
 
@@ -103,3 +122,45 @@ class TestMockOpeapiImageFiltering():
 		#dengan hasil gagal, contoh : request id tidak valid
 		result = img_filter.proceedReqId('1')
 		assert result['status'].lower() != 'successful'
+
+
+
+		#Test dengan request POST , berhasil total
+		data = {
+			'app_id' : self.sample_app_id, 
+			'key' : self.sample_key,
+			'img_url' : self.sample_image
+		}
+		resp = client.post('/filter', json=data)
+		
+		result = json.loads(resp.data)
+
+
+		assert result['status'].lower() == 'successful'
+		assert result['img_url'] != None
+
+
+
+		#Test dengan request POST , gagal di request id, berhasil di request task
+		data = {
+			'app_id' : '1', 
+			'key' : self.sample_key,
+			'img_url' : self.sample_image
+		}
+		resp = client.post('/filter', json=data)
+		
+		result = json.loads(resp.data)
+
+
+		assert result['status'].lower() != 'successful'
+
+
+		# testing function image filtering on local computer
+		img_url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Nelumno_nucifera_open_flower_-_botanic_garden_adelaide2.jpg/800px-Nelumno_nucifera_open_flower_-_botanic_garden_adelaide2.jpg'
+		file_name = img_url.split('/')[-1]
+		result = download_file(img_url)
+		assert file_name == result 
+    	
+
+		result = filterImage(file_name)
+		assert file_name == filterImage(file_name) 

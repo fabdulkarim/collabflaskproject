@@ -3,6 +3,7 @@ import requests
 
 import xmltodict, json
 import time                 #mengambil fungsi delay
+from PIL import Image, ImageFilter, ImageOps, ImageDraw
 
 
 
@@ -14,21 +15,76 @@ filter2 = 'color_dominance'
 
 
 
-def main(p_app_id, p_app_key, p_img_url):
 
-    result = proceedBlurring(p_app_id,  p_app_key, p_img_url)
+#proses ambil gambar dari url
+# file_name = download_file('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Nelumno_nucifera_open_flower_-_botanic_garden_adelaide2.jpg/800px-Nelumno_nucifera_open_flower_-_botanic_garden_adelaide2.jpg')
+# blurImage(file_name)
+
+def download_file(img_url):
+    local_filename = img_url.split('/')[-1]
+    with requests.get(img_url, stream=True) as r:
+        r.raise_for_status()
+        try:
+            with open(local_filename, 'wb') as f:
+                for chunk in r.iter_content(chunk_size=8192): 
+                    if chunk: # filter out keep-alive new chunks
+                        f.write(chunk)
+
+
+                return local_filename        
+        except Exception as e:
+            return e
+
+
+
+
+def filterImage(file_name):
+    try:
+        image = Image.open(file_name)
+        # return image.show()
+        blurred_img = image.filter(ImageFilter.BLUR)
+        
+
+        new_img = Image.new('RGB', image.size, (66,122,181))
+        new_img.putalpha(225)
+
+        blurred_img.paste(new_img, (0, 0), new_img)
+
+        blurred_img.save(file_name)
+        return file_name
+        # blurred_img.show()
+
+
     
-    if result['status']=='successful':
-        time.sleep(3)
-        result1 = proceedDesaturate(p_app_id, p_app_key, p_img_url)
-        print(result1)
-        if result1['status']=='successful':
+        # image.save(sys.stdout, "PNG")
+        # final_img = ImageOps.grayscale(blurred_img)
+        # final_img.save(file_name)
+        # image = Image.open(file_name)
+        # return image.show()
+    except Exception as e:
+        return e
 
-            return {'status':'successful', 'img_url':result1['img_url']}
-        else:
-            return {'status':result1['status'], 'message':result1['message']}
-    else:
-        return {'status':result['status'], 'message':result['message']}
+
+def main(img_url):
+    file_name = download_file(img_url)
+    return filterImage(file_name)
+
+
+# def main(p_app_id, p_app_key, p_img_url):
+
+    # result = proceedBlurring(p_app_id,  p_app_key, p_img_url)
+    
+    # if result['status']=='successful':
+    #     time.sleep(3)
+    #     result1 = proceedDesaturate(p_app_id, p_app_key, p_img_url)
+    #     print(result1)
+    #     if result1['status']=='successful':
+
+    #         return {'status':'successful', 'img_url':result1['img_url']}
+    #     else:
+    #         return {'status':result1['status'], 'message':result1['message']}
+    # else:
+    #     return {'status':result['status'], 'message':result['message']}
 
 #########################################################################################
 
