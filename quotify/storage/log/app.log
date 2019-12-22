@@ -1,0 +1,81 @@
+[2019-12-22 15:59:06,805]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
+Traceback (most recent call last):
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 458, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 573, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 80, in post
+    a,b = fadhilProcess(temp_abs_path,args['arg1'],args['arg2'])
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/scriptFadhil.py", line 70, in fadhilProcess
+    for i in all_emo:
+TypeError: 'builtin_function_or_method' object is not iterable
+[2019-12-22 16:02:10,124]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
+Traceback (most recent call last):
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 85, in post
+    urlBimon = main(args['arg3'],args['arg4'],urlAwal)['img_url']
+KeyError: 'img_url'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 458, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 573, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 88, in post
+    print(urlBimon)
+UnboundLocalError: local variable 'urlBimon' referenced before assignment
+[2019-12-22 17:30:22,564]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /login [GET]
+Traceback (most recent call last):
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 458, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 573, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_jwt_extended/view_decorators.py", line 107, in wrapper
+    verify_jwt_in_request()
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_jwt_extended/view_decorators.py", line 32, in verify_jwt_in_request
+    jwt_data, jwt_header = _decode_jwt_from_request(request_type='access')
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_jwt_extended/view_decorators.py", line 314, in _decode_jwt_from_request
+    raise NoAuthorizationError(errors[0])
+flask_jwt_extended.exceptions.NoAuthorizationError: Missing Authorization Header
+[2019-12-22 17:30:22,567]{/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/__init__.py:77} ERROR - REQUEST_LOG	{"status_code": 500, "request": null, "response": {"message": "Internal Server Error"}}
+[2019-12-22 17:33:28,332]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /login [GET]
+Traceback (most recent call last):
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 458, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 573, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_jwt_extended/view_decorators.py", line 107, in wrapper
+    verify_jwt_in_request()
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_jwt_extended/view_decorators.py", line 32, in verify_jwt_in_request
+    jwt_data, jwt_header = _decode_jwt_from_request(request_type='access')
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_jwt_extended/view_decorators.py", line 314, in _decode_jwt_from_request
+    raise NoAuthorizationError(errors[0])
+flask_jwt_extended.exceptions.NoAuthorizationError: Missing Authorization Header
+[2019-12-22 17:33:28,335]{/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/__init__.py:77} ERROR - REQUEST_LOG	{"status_code": 500, "request": null, "response": {"message": "Internal Server Error"}}
+[2019-12-22 17:33:56,585]{/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/__init__.py:73} INFO - REQUEST_LOG	{"status_code": 200, "request": null, "response": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NzcwMTA4MzYsIm5iZiI6MTU3NzAxMDgzNiwianRpIjoiMzRhZDc2NjQtNzMzMy00YWRmLWJiMDAtYTU4N2U1MDUyYmRhIiwiZXhwIjoxNTc3MDk3MjM2LCJpZGVudGl0eSI6ImFkbWluIiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9jbGFpbXMiOnsiaXNhZG1pbiI6dHJ1ZX19.Z3Rcl5Oa2PamPDfZd5DWfg41z1bkvTNoRlMq8pgNGCs"}}
+[2019-12-22 17:37:05,398]{/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/__init__.py:73} INFO - REQUEST_LOG	{"status_code": 200, "request": null, "response": {"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NzcwMTEwMjUsIm5iZiI6MTU3NzAxMTAyNSwianRpIjoiMmE2ZDM5OGEtODBjNS00NDBlLWFlYzAtYWJmOWIyM2IwZDE5IiwiZXhwIjoxNTc3MDk3NDI1LCJpZGVudGl0eSI6ImFkbWluIiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9jbGFpbXMiOnsiaXNhZG1pbiI6dHJ1ZX19.3yD_iIe6mLD-vwczQk6-7KDGJk5H8UL1XOOwYk6sHU4"}}
