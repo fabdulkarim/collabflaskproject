@@ -94,12 +94,15 @@ def checkResize(lokasi):
     #print(os.stat(lokasi).st_size)
     img = Image.open(lokasi)
     width, height = img.size
-    while (int(os.stat(lokasi).st_size) > 5000000) or (width > 1000) or (height > 1000):
+    fl_sz = int(os.stat(lokasi).st_size)
+    while (fl_sz > 5000000) or (width > 1000) or (height > 1000):
         #print(os.stat(lokasi).st_size)
         img = Image.open(lokasi)
-        img = img.resize(size=(round(width*0.8), round(height*0.8)))
-        img.save(lokasi,optimize=True, quality=75)
+        if (width > 1000) or (height > 1000):
+            img = img.resize(size=(round(width*0.8), round(height*0.8)))
+        img.save(lokasi,optimize=True, quality=80)
         width, height = img.size
+        fl_sz = int(os.stat(lokasi).st_size)
         
 
 

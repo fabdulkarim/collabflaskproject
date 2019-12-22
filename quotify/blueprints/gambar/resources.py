@@ -6,18 +6,18 @@ import os, random, string
 
 from datetime import datetime
 
-
+from .image_filtering_resource import download_file, filterImage
 from .scriptFadhil import fadhilProcess
 from .scriptWoka import MergeResource
 from .scriptBimon import *
 
 
 ############# ADDING jwt + internal required for client, book, user
-# from flask_jwt_extended import jwt_required
-# from blueprints import internal_required
+from flask_jwt_extended import jwt_required
+from blueprints import internal_required, non_internal_required
 
 #from .model import Gambars
-from blueprints import app # db
+from blueprints import app, db
 
 from . import *
 
@@ -42,7 +42,8 @@ def allowed_file(filename):
 
 class GambarsResource(Resource):
 
-    
+    @jwt_required
+    @non_internal_required
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument('arg1', location='args')
@@ -51,6 +52,9 @@ class GambarsResource(Resource):
         parser.add_argument('arg4', location='args')
         
         args = parser.parse_args()
+
+        if len(args) < 4:
+            return {'message':'argumen tidak lengkap'}, 404
 
         if 'file' not in request.files:
             return {'message': 'gagal'}, 400
@@ -84,18 +88,20 @@ class GambarsResource(Resource):
             #dict_ref = {'text':a,'author':b}
             ## subpro mas bimon ##
             try:
-                urlBimon = main(args['arg3'],args['arg4'],urlAwal)['img_url']
-                MergeResource.merge(urlBimon,a,b)            
+                fileBimon = filterImage(download_file(urlAwal)) 
+                urlBimon = MergeResource.uploads(fileBimon)
+                terakhir = MergeResource.merge(urlBimon,a,b)            
             except:
                 #print(urlBimon)
-                MergeResource.merge(urlAwal,a,b)
+                terakhir = MergeResource.merge(urlAwal,a,b)
             
+            urlFinal = MergeResource.uploads('mantap.jpg')
             final = os.path.abspath('mantap.jpg')
 
 
             ## mas woka time 
             
 
-            return {'status':'success', 'url_to_see':final}
+            return {'status':'success', 'url_to_see':urlFinal}
 
 api.add_resource(GambarsResource, '')
