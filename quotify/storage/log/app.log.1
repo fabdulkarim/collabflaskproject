@@ -1,0 +1,119 @@
+[2019-12-22 14:50:01,239]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
+Traceback (most recent call last):
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 458, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 573, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 73, in post
+    urlAwal = MergeResource.uploads(temp_abs_path)
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/scriptWoka.py", line 123, in uploads
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+[2019-12-22 14:55:56,230]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
+Traceback (most recent call last):
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 458, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 573, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 80, in post
+    a,b = fadhilProcess(temp_abs_path,args['arg1'],args['arg2'])
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/scriptFadhil.py", line 65, in fadhilProcess
+    hasil2 = r2.json()['emotions_detected'][0]
+IndexError: list index out of range
+[2019-12-22 15:13:50,534]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
+Traceback (most recent call last):
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 458, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 573, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 84, in post
+    urlBimon = main(args['arg3'],args['arg4'],urlAwal)['img_url']
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/scriptBimon.py", line 19, in main
+    result = proceedBlurring(p_app_id,  p_app_key, p_img_url)
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/scriptBimon.py", line 89, in proceedBlurring
+    result = proceedReqId(req_id)
+TypeError: proceedReqId() missing 1 required positional argument: 'request_id'
+[2019-12-22 15:19:51,364]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
+Traceback (most recent call last):
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 458, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 573, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 84, in post
+    urlBimon = main(args['arg3'],args['arg4'],urlAwal)['img_url']
+KeyError: 'img_url'
+[2019-12-22 15:23:04,979]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
+Traceback (most recent call last):
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 458, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 573, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 90, in post
+    MergeResource.merge(temp_abs_path,dict_ref)
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/scriptWoka.py", line 28, in merge
+    width,height=image.size
+UnboundLocalError: local variable 'image' referenced before assignment
+[2019-12-22 15:39:39,469]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
+Traceback (most recent call last):
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 458, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 573, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 80, in post
+    a,b = fadhilProcess(temp_abs_path,args['arg1'],args['arg2'])
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/scriptFadhil.py", line 65, in fadhilProcess
+    hasil2 = r2.json()['emotions_detected'][0]
+IndexError: list index out of range
+[2019-12-22 15:57:55,640]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
+Traceback (most recent call last):
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 458, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 573, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 80, in post
+    a,b = fadhilProcess(temp_abs_path,args['arg1'],args['arg2'])
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/scriptFadhil.py", line 67, in fadhilProcess
+    all_emo = sav['emotions_scores'].keys
+KeyError: 'emotions_scores'
