@@ -31,6 +31,17 @@ def internal_required(fn):
             return fn(*args, **kwargs)
     return wrapper
 
+def non_internal_required(fn):
+    @wraps(fn)
+    def wrapper(*args, **kwargs):
+        verify_jwt_in_request()
+        claims= get_jwt_claims()
+        if claims['isadmin']:
+            return {'status': 'FORBIDDEN', 'message': 'Not meant for Admins'}, 403
+        else:
+            return fn(*args, **kwargs)
+    return wrapper
+
 
 # #################### NAMBAHIN BUAT TESTING
 # try:
@@ -76,9 +87,9 @@ def after_request(response):
             'status_code': response.status_code, # ini ngebuat 400 gak bisa masuk 
             'request': requestData, 'response': json.loads(response.data.decode('utf-8'))}))
 
-#     # ini sesuai yang masnya, jadi ngambil argumennya, tadi error get_json
-#     # dipisah jadi info dan error
-#     return response
+    # ini sesuai yang masnya, jadi ngambil argumennya, tadi error get_json
+    # dipisah jadi info dan error
+    return response
 
 from blueprints.gambar.resources import bp_gambar
 app.register_blueprint(bp_gambar, url_prefix='/gambar')
