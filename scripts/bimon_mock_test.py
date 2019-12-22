@@ -2,6 +2,7 @@ import json
 from unittest import mock
 from unittest.mock import patch
 from blueprints.main.filterresource import FilterResource
+from blueprints.main.localFilterResource import *
 import dicttoxml
 from . import client 
 
@@ -152,3 +153,14 @@ class TestMockOpeapiImageFiltering():
 
 
 		assert result['status'].lower() != 'successful'
+
+
+		# testing function image filtering on local computer
+		img_url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Nelumno_nucifera_open_flower_-_botanic_garden_adelaide2.jpg/800px-Nelumno_nucifera_open_flower_-_botanic_garden_adelaide2.jpg'
+		file_name = img_url.split('/')[-1]
+		result = download_file(img_url)
+		assert file_name == result 
+    	
+
+		result = filterImage(file_name)
+		assert file_name == filterImage(file_name) 
