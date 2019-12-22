@@ -32,8 +32,8 @@ class MergeResource(Resource):
             
         width,height=image.size
         text_ori=sys.getsizeof(args['texts'])
-        if text_ori>300:
-            return "Your Qoutes is too long for a Quotes, Please Make it Shorter"
+        if text_ori>300 or height > 1000 or width > 1000:
+            print("Your Qoutes  or Image is too long for a Quotes, Please Make it Shorter")
         else:
             font_size=round(height/15)
             font = ImageFont.truetype('RobotoCondensed-Bold.ttf', size=font_size)
@@ -78,11 +78,11 @@ class MergeResource(Resource):
                 per=height/3
                 a=round(width/3)
             
-                (x, y) = (a-2, per-5)
+                (x, y) = (a+55, per-5)
                 color = 'rgb(0, 0, 0)' # black color
                 draw.text((x, y), args['texts'], fill=color, font=font2) 
             
-                (x2, y2) = (a, per)
+                (x2, y2) = (a+50, per)
                 color2 = 'rgb(255, 255, 255)' # white color
                 draw.text((x2, y2), args['texts'], fill=color2, font=font) 
             
