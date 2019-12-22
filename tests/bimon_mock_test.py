@@ -1,7 +1,8 @@
 import json
 from unittest import mock
 from unittest.mock import patch
-from quotify.blueprints.gambar.scriptBimon import *
+from blueprints.main.filterresource import FilterResource
+from blueprints.main.localFilterResource import *
 import dicttoxml
 from . import client 
 
