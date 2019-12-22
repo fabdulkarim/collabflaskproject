@@ -1,4 +1,4 @@
-[2019-12-21 16:40:18,232]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
+[2019-12-22 14:50:01,239]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
 Traceback (most recent call last):
   File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
@@ -10,10 +10,12 @@ Traceback (most recent call last):
     return self.dispatch_request(*args, **kwargs)
   File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 573, in dispatch_request
     resp = meth(*args, **kwargs)
-  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 41, in post
-    if file and allowed_file(file.filename):
-NameError: name 'allowed_file' is not defined
-[2019-12-21 16:56:50,085]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 73, in post
+    urlAwal = MergeResource.uploads(temp_abs_path)
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/scriptWoka.py", line 123, in uploads
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+[2019-12-22 14:55:56,230]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
 Traceback (most recent call last):
   File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
@@ -25,10 +27,12 @@ Traceback (most recent call last):
     return self.dispatch_request(*args, **kwargs)
   File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 573, in dispatch_request
     resp = meth(*args, **kwargs)
-  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 44, in post
-    if file and allowed_file(file.filename):
-NameError: name 'allowed_file' is not defined
-[2019-12-21 16:57:30,237]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 80, in post
+    a,b = fadhilProcess(temp_abs_path,args['arg1'],args['arg2'])
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/scriptFadhil.py", line 65, in fadhilProcess
+    hasil2 = r2.json()['emotions_detected'][0]
+IndexError: list index out of range
+[2019-12-22 15:13:50,534]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
 Traceback (most recent call last):
   File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
@@ -40,10 +44,14 @@ Traceback (most recent call last):
     return self.dispatch_request(*args, **kwargs)
   File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 573, in dispatch_request
     resp = meth(*args, **kwargs)
-  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 48, in post
-    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-NameError: name 'os' is not defined
-[2019-12-21 16:58:11,036]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 84, in post
+    urlBimon = main(args['arg3'],args['arg4'],urlAwal)['img_url']
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/scriptBimon.py", line 19, in main
+    result = proceedBlurring(p_app_id,  p_app_key, p_img_url)
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/scriptBimon.py", line 89, in proceedBlurring
+    result = proceedReqId(req_id)
+TypeError: proceedReqId() missing 1 required positional argument: 'request_id'
+[2019-12-22 15:19:51,364]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
 Traceback (most recent call last):
   File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
@@ -55,12 +63,10 @@ Traceback (most recent call last):
     return self.dispatch_request(*args, **kwargs)
   File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 573, in dispatch_request
     resp = meth(*args, **kwargs)
-  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 49, in post
-    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/werkzeug/datastructures.py", line 2800, in save
-    dst = open(dst, "wb")
-FileNotFoundError: [Errno 2] No such file or directory: '../../storage/image/photo4112903070138083243.jpg'
-[2019-12-21 17:04:27,498]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 84, in post
+    urlBimon = main(args['arg3'],args['arg4'],urlAwal)['img_url']
+KeyError: 'img_url'
+[2019-12-22 15:23:04,979]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
 Traceback (most recent call last):
   File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
@@ -72,20 +78,12 @@ Traceback (most recent call last):
     return self.dispatch_request(*args, **kwargs)
   File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 573, in dispatch_request
     resp = meth(*args, **kwargs)
-  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 50, in post
-    return {'message': url_for('uploaded_file', filename=filename)}
-  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/helpers.py", line 370, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 2215, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/helpers.py", line 358, in url_for
-    endpoint, values, method=method, force_external=external
-  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/werkzeug/routing.py", line 2020, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'uploaded_file' with values ['filename']. Did you mean 'static' instead?
-[2019-12-21 17:05:23,441]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 90, in post
+    MergeResource.merge(temp_abs_path,dict_ref)
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/scriptWoka.py", line 28, in merge
+    width,height=image.size
+UnboundLocalError: local variable 'image' referenced before assignment
+[2019-12-22 15:39:39,469]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
 Traceback (most recent call last):
   File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
@@ -97,16 +95,25 @@ Traceback (most recent call last):
     return self.dispatch_request(*args, **kwargs)
   File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 573, in dispatch_request
     resp = meth(*args, **kwargs)
-  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 51, in post
-    return {'message': url_for('uploaded_file', filename=filename)}
-  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/helpers.py", line 370, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 2215, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/helpers.py", line 358, in url_for
-    endpoint, values, method=method, force_external=external
-  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/werkzeug/routing.py", line 2020, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'uploaded_file' with values ['filename']. Did you mean 'static' instead?
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 80, in post
+    a,b = fadhilProcess(temp_abs_path,args['arg1'],args['arg2'])
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/scriptFadhil.py", line 65, in fadhilProcess
+    hasil2 = r2.json()['emotions_detected'][0]
+IndexError: list index out of range
+[2019-12-22 15:57:55,640]{/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py:1891} ERROR - Exception on /gambar [POST]
+Traceback (most recent call last):
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 458, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/prowrap/lib/python3.6/site-packages/flask_restful/__init__.py", line 573, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/resources.py", line 80, in post
+    a,b = fadhilProcess(temp_abs_path,args['arg1'],args['arg2'])
+  File "/home/alta14/Desktop/AltA/W5pro/collabflaskproject/quotify/blueprints/gambar/scriptFadhil.py", line 67, in fadhilProcess
+    all_emo = sav['emotions_scores'].keys
+KeyError: 'emotions_scores'

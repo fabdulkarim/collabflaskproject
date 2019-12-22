@@ -1,3 +1,11 @@
 flask
-flask-restful
+flask-sqlalchemy
+pymysql
+flask_restful 
+flask-migrate
+flask-script
 flask-jwt-extended
+password_strength
+requests
+pytest
+pillow

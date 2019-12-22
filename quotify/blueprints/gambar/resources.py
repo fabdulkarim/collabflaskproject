@@ -7,6 +7,11 @@ import os, random, string
 from datetime import datetime
 
 
+from .scriptFadhil import fadhilProcess
+from .scriptWoka import MergeResource
+from .scriptBimon import *
+
+
 ############# ADDING jwt + internal required for client, book, user
 # from flask_jwt_extended import jwt_required
 # from blueprints import internal_required
@@ -36,8 +41,17 @@ def allowed_file(filename):
 
 
 class GambarsResource(Resource):
+
     
     def post(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument('arg1', location='args')
+        parser.add_argument('arg2', location='args')
+        parser.add_argument('arg3', location='args')
+        parser.add_argument('arg4', location='args')
+        
+        args = parser.parse_args()
+
         if 'file' not in request.files:
             return {'message': 'gagal'}, 400
         file = request.files['file']
@@ -47,10 +61,41 @@ class GambarsResource(Resource):
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             filename2 = 'random'
-            filename3 = ''.join(random.SystemRandom().choice(string.ascii_letters + string.digits) for _ in range(32)) + '.jpg'
-            file.save("%s/%s/%s" %(app.root_path, app.config['UPLOAD_FOLDER'],filename3)) #os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return {'message': 'success'} #url_for('uploaded_file', static=filename2)}
+            filename3 = ''.join(random.SystemRandom().choice(string.ascii_letters + string.digits) for _ in range(8)) + '.jpg'
+            file.save(os.path.abspath(filename3))
+            #file.save("%s/%s/%s" %(app.root_path, app.config['UPLOAD_FOLDER'],filename3))            
+            #absolute_path = "%s/%s/%s" %(app.root_path, app.config['UPLOAD_FOLDER'],filename3)
+            #os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            #return {'message': 'success'} #url_for('uploaded_file', static=filename2)}
         #pass
+            temp_abs_path = os.path.abspath(filename3)
+            ## hash upload ##
+            # urlAwal = MergeResource.uploads(temp_abs_path)
+            #print(urlAwal)
 
+
+
+            ## subpro fadhil ##
+            # a,b = fadhilProcess(absolute_path,args['arg1'],args['arg2'])
+            a,b = fadhilProcess(temp_abs_path,args['arg1'],args['arg2'])
+            ##
+            #trial nyoba upload after resize
+            urlAwal = MergeResource.uploads(temp_abs_path)
+            #dict_ref = {'text':a,'author':b}
+            ## subpro mas bimon ##
+            try:
+                urlBimon = main(args['arg3'],args['arg4'],urlAwal)['img_url']
+                MergeResource.merge(urlBimon,a,b)            
+            except:
+                #print(urlBimon)
+                MergeResource.merge(urlAwal,a,b)
+            
+            final = os.path.abspath('mantap.jpg')
+
+
+            ## mas woka time 
+            
+
+            return {'status':'success', 'url_to_see':final}
 
 api.add_resource(GambarsResource, '')
