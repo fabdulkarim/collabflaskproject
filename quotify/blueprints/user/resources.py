@@ -110,6 +110,16 @@ class UserEdit(Resource):
 
             return marshal(user, Users.response_fields), 200, {'Content-Type': 'application/json'}
         return {'status': 'failed', 'relust': str(validation)}, 400, {'Content-Type': 'application/json'}
+    
+    @jwt_required
+    @internal_required
+    def get(self):
+        qry = Users.query.all()
+
+        if qry is None:
+            return {'status': 'NOT_FOUND'}, 404
+
+        return marshal(qry, Users.response_fields), 200
 
 class UserSignUp(Resource):
 
@@ -136,8 +146,8 @@ class UserSignUp(Resource):
             
             user = Users(args['username'], password_digest)
 
-            db.session.add(user)
             try:
+                db.session.add(user)
                 db.session.commit()
             except:
                 return {'status':'failed','message':'conflicting database'}, 409, {'Content-Type':'application/json'}
@@ -146,5 +156,5 @@ class UserSignUp(Resource):
             return marshal(user, Users.response_fields), 200, {'Content-Type': 'application/json'}
         return {'status': 'failed', 'result': str(validation)}, 400, {'Content-Type': 'application/json'}
 
-api.add_resource(UserEdit, '/internal')
+api.add_resource(UserEdit, '/internal', '/internal/<int:id>')
 api.add_resource(UserSignUp, '/signup')

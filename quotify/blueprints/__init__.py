@@ -44,19 +44,19 @@ def non_internal_required(fn):
 
 
 # #################### NAMBAHIN BUAT TESTING
-# try:
-#     env = os.environ.get('FLASK_ENV', 'development') #nama, default
-#     if env == 'testing':
-#         app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:JalanTidarno.23@localhost:3306/restDB_test'
-#     else:
-#         app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:JalanTidarno.23@localhost:3306/restDB'
-# except Exception as e:
-#     raise e
+try:
+    env = os.environ.get('FLASK_ENV', 'development') #nama, default
+    if env == 'testing':
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:JalanTidarno.23@localhost:3306/flaskproDB_test'
+    else:
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:JalanTidarno.23@localhost:3306/flaskproDB'
+except Exception as e:
+    raise e
 
 ##### HARUS DI ATAS ######################################################
 
 app.config['APP_DEBUG'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:JalanTidarno.23@localhost:3306/flaskproDB' #connectionstring
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:JalanTidarno.23@localhost:3306/flaskproDB' #connectionstring
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 db = SQLAlchemy(app)

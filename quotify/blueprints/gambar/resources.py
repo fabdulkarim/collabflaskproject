@@ -8,8 +8,8 @@ from datetime import datetime
 
 from .image_filtering_resource import download_file, filterImage
 from .scriptFadhil import fadhilProcess
+#import scriptFadhil
 from .scriptWoka import MergeResource
-from .scriptBimon import *
 
 
 ############# ADDING jwt + internal required for client, book, user
@@ -82,6 +82,7 @@ class GambarsResource(Resource):
             ## subpro fadhil ##
             # a,b = fadhilProcess(absolute_path,args['arg1'],args['arg2'])
             a,b = fadhilProcess(temp_abs_path,args['arg1'],args['arg2'])
+            #a,b = fadhilProcess(temp_abs_path,args['arg1'],args['arg2'])
             ##
             #trial nyoba upload after resize
             urlAwal = MergeResource.uploads(temp_abs_path)
@@ -102,6 +103,6 @@ class GambarsResource(Resource):
             ## mas woka time 
             
 
-            return {'status':'success', 'url_to_see':urlFinal}
+            return {'status':'success', 'url_to_see':urlFinal}, 200
 
 api.add_resource(GambarsResource, '')

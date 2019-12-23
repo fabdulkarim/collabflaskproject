@@ -7,7 +7,7 @@ class Users(db.Model):
     #client_name = db.Column(db.String(255), nullable=False) #agar dapat dibedakan per entry
     username = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
-    #status = db.Column(db.Boolean, nullable=False)
+    status = db.Column(db.Boolean, nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_onupdate=db.func.now())
 
@@ -15,6 +15,7 @@ class Users(db.Model):
         'id': fields.Integer,
         'username': fields.String,
         'password': fields.String,
+        'status': fields.Boolean,
         'created_at': fields.String,
         'updated_at': fields.String
     }
@@ -32,6 +33,7 @@ class Users(db.Model):
         #self.client_id = client_id autogenerate
         self.username = username 
         self.password = password
+        self.status = True
 
     def __repr__(self):
         return '<Client %r %s>' % (self.id, self.username)
